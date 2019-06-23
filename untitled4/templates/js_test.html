@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js表单验证</title>
+    <script type="text/javascript">
+        function checknm() {
+            var check = false;
+            var username = document.getElementsByName("username")[0];
+            if (1<=username.value.length && username.value.length<=10){
+                console.log(document.getElementById("checktext1").innerHTML = " <font color='green'>输入正确!</font>")
+                check = true;
+            }else{
+
+                document.getElementById("checktext1").innerHTML = "<font color='red'>最多10位且不为空！</font>";
+                check = false;
+            }
+            return check;
+        }
+
+        function checkide(){
+            var check = false;
+            var userid = document.getElementsByName("userid")[0];
+            if (1<=userid.value.length && userid.value.length<=10){
+                document.getElementById("checktext2").innerHTML = " <font color='green'>输入正确!</font>";
+                check = true;
+
+            }else{
+                document.getElementById("checktext2").innerHTML = "<font color='red'>最多10位且不为空！</font>";
+                check = false;
+            }
+            return check;
+        }
+
+        function checkpwd(){
+            var check = false;
+            var userpwd = document.getElementsByName("userpwd")[0];
+            if (6<userpwd.value.length && userpwd.value.length<=15){
+                document.getElementById("checktext3").innerHTML = " <font color='green'>输入正确!</font>";
+                check = true;
+
+            }else{
+                document.getElementById("checktext3").innerHTML = " <font color='red'>最少6位，最多15位!</font>";
+                check = false;
+            }
+            return check;
+        }
+
+        function checkpwd1(){
+            var check = false;
+            var userpwd1 = document.getElementsByName("userpwd1")[0];
+            var userpwd = document.getElementsByName("userpwd")[0];
+            if (userpwd1.value == userpwd.value){
+                document.getElementById("checktext4").innerHTML = "<font color='green'>密码一致！</font>";
+                check = true;
+
+
+            }else{
+                document.getElementById("checktext4").innerHTML = "<font color='red'>两次密码不一致!</font>";
+                check = false;
+            }
+            return check;
+        }
+
+        function checkeml(){
+            var check = false;
+            var useremail = document.getElementsByName("useremail")[0];
+            if (!/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(useremail.value)){
+                document.getElementById("checktext5").innerHTML = "<font color='red'>邮箱格式不正确!</font>";
+                check = false;
+
+            }else{
+                document.getElementById("checktext5").innerHTML = " <font color='green'>输入正确!</font>";
+                check = true;
+            }
+            return check;
+        }
+
+        function check(){
+            var check = checknm() && checkide() && checkpwd() && checkpwd1() && checkeml();
+            return check;
+
+        }
+    </script>
+    <style>
+        body{
+             background-color: lightskyblue;
+        }
+        .form{
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="form">
+    <h1 style="text-align: center"><strong>登录</strong></h1>
+    <form method="get" action="" onsubmit = "return check()" >
+        <table border="1" cellpadding="5" cellspacing="0" width="100%" bgcolor="#F2F2F2">
+            <tr>
+                <td width="15%"><label></label><strong>用户名:</strong></td>
+                <td width="45%"><input type="text" name="username" value="" placeholder="用户名(5位以内)" onchange="checknm()"></td>
+                <td width="40%"><span id="checktext1"></span></td>
+            </tr>
+            <tr>
+                <td><label></label><strong>用户ID:</strong></td>
+                <td><input type="text" name="userid" value="" placeholder="数字ID(11位以内)" onchange="checkide()"></td>
+                <td><span id="checktext2"></span></td>
+            </tr>
+
+            <tr>
+                <td><label></label><strong>登录密码:</strong></td>
+                <td><input type="password" name="userpwd" value="" placeholder="请输入密码(6~15)" onchange="checkpwd()"></td>
+                <td><span id="checktext3"></span></td>
+            </tr>
+
+            <tr>
+                <td><label></label><strong>确认密码:</strong></td>
+                <td><input type="password" name="userpwd1" value="" placeholder="请再次确认密码" onchange="checkpwd1()"></td>
+                <td><span id="checktext4"></span></td>
+            </tr>
+            <tr>
+                <td><label></label><strong>电子邮箱:</strong></td>
+                <td><input type="text" name="useremail" value="" placeholder="邮箱地址 如 123@qq.com" onchange="checkeml()"></td>
+                <td><span id="checktext5"></span></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="提交">
+                    <input type="reset" value="重置">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>

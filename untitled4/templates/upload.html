@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>（>___<）</title>
+</head>
+<style>
+    body{
+        margin: 0px;
+        background-color: grey;
+    }
+    .upload-content{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 150px;
+            background-color: green;
+            }
+    .upload-content input{
+            widows: 80%;
+            height: 40px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            text-indent: 1em;
+        }
+    .upload-content .m{
+           color:orange;
+           text-align:center;
+    }
+    .b{
+        background-color: ivory;
+    }
+    .b1{
+        float: left;
+        height: 400px;
+        width: 729px;
+        border: 5px solid yellow;
+        margin: 20px 10px;
+        background-color: whitesmoke;
+        border-radius: 8px;
+    }
+</style>
+<body>
+<form action="/upload.html/" method="post" enctype="multipart/form-data" class="upload-content">
+    {% csrf_token %}
+     <a href="/logout" class="m">注销</a>
+    <input type="file" name="fafafa" />
+    <input type="submit" value="上传"/>
+</form>
+
+<div class="b">
+    {% for item in img_list %}
+        <div class="b1"  controls>
+            <img style="height: 400px;width: 729px" src="/{{ item.path }}"/>
+            <p></p>
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>

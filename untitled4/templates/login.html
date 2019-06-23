@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <style>
+
+
+        body{
+
+            display: grid;
+            background-color: #096;
+        }
+        .login{
+           /* grid-row: 2;
+            grid-column: 3;*/
+            width:300px;
+            height: 300px;
+            margin: auto;
+            background-color: #ebf0f1;
+            border-radius: 8px;
+        }
+        .title{
+            line-height: 80px;
+            text-align: center;
+            font-size: 2em;
+            color: #096;
+        }
+        .login-content{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 300px;
+            background-color: #096;
+            }
+        .login-content input{
+            widows: 80%;
+            height: 40px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            text-indent: 1em;
+        }
+    </style>
+</head>
+<body>
+<div class="login">
+    <h2 class="title">请登录</h2>
+    <form action="login.html" method="post" class="login-content">
+    {% csrf_token %}
+    <input type="text" name="user" placeholder="请输入账号" autocomplete="off">
+    <input type="password" name="pwd" placeholder="请输入密码">
+    <span style="color:red">{{ msg}}</span>
+    <input type="submit" value="登录">
+</form>
+</div>
+
+</body>
+</html>
